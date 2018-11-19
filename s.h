@@ -14,11 +14,11 @@ typedef struct body_add{
 fa food_save[7];
 bd b_d[20];
 
-static int head = 6;
-static int body = 5;
+static int head;
+static int body;
 void s_f_p();
 void s_food();
-void body_i();
-void body_p();
+void body_i(int ,int);
+void body_p(int ,int);
 void s_dir();
-void s_nextdir();
+void s_nextdir(int ,int);

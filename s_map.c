@@ -7,10 +7,11 @@
 // s_f_p();
 void main()
 {
-	int head1 = head;
+	head = 6;
+	body = 5;
 	int i =0;
 	initscr();
-	body_i();
+	body_i(head,body);
 	pthread_t t1;
 	while(1){
 	clear();
@@ -37,11 +38,12 @@ void main()
 	move(MAP_MAX,i);
 	addstr("-");
 	}
-	//pthread_create(&t1,NULL,s_dir,(void*)" ");
+	pthread_create(&t1,NULL,s_dir,(void*)" ");
 	s_food();
 	s_f_p();
-	body_p();	
-	s_nextdir();
+	body_p(head,body);	
+	head++;
+	s_nextdir(head,body);
 	refresh();
 	sleep(1);	
 	//getch();
