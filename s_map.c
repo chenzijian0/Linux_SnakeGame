@@ -1,3 +1,4 @@
+#include<pthread.h>
 #include<stdio.h>
 #include<curses.h>
 #include<unistd.h>
@@ -6,8 +7,11 @@
 // s_f_p();
 void main()
 {
+	int head1 = head;
 	int i =0;
 	initscr();
+	body_i();
+	pthread_t t1;
 	while(1){
 	clear();
 	move(0,0);
@@ -33,12 +37,13 @@ void main()
 	move(MAP_MAX,i);
 	addstr("-");
 	}
-	body_i();
-	body_p();
+	//pthread_create(&t1,NULL,s_dir,(void*)" ");
 	s_food();
 	s_f_p();
-	sleep(2);
-	refresh();	
+	body_p();	
+	s_nextdir();
+	refresh();
+	sleep(1);	
 	//getch();
 	}
 	endwin();

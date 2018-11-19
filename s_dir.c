@@ -4,11 +4,12 @@
 #define DIR_RIGHT -1
 #define DIR_ON 2
 #define DIR_UNDER -2
-
-void s_dir(char now)
+int flag = -1;
+void s_dir()
 {
-	static int flag = 0;
-	switch(now)
+	char dir;
+	dir = getch();
+	switch(dir)
 	{
 	case 100:
 	flag += DIR_RIGHT;
@@ -25,7 +26,7 @@ void s_dir(char now)
 	}
 	if(flag)
 	{
-		switch(now)
+		switch(dir)
 		{
 		case 100:
 		flag = DIR_RIGHT;
@@ -42,4 +43,34 @@ void s_dir(char now)
 		}
 	}
 
+}
+
+void s_nextdir()
+{
+	
+	head++;
+	//head--;
+	//head = head % 20;
+	switch(flag)
+	{
+	case 1:
+	b_d[head-1].x =b_d[head-2].x-1;
+	b_d[head-1].y =b_d[head-2].y;
+	break;
+	case -1:
+	b_d[head-1].x =b_d[head-2].x+1;
+	b_d[head-1].y =b_d[head-2].y;
+	break;
+	case 2:
+	b_d[head-1].x =b_d[head-2].x;
+	b_d[head-1].y =b_d[head-2].y+1;
+	break;
+	case -2:
+	b_d[head-1].x =b_d[head-2].x;
+	b_d[head-1].y =b_d[head-2].y-1;
+	break;
+	
+	}
+	//head++;
+	
 }
