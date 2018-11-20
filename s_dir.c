@@ -5,10 +5,18 @@
 #define DIR_ON -2
 #define DIR_UNDER 2
 int flag = -1;
+int snake_dir = -1;
+char dir;
+void s_getch()
+{
+	dir = 'l';	
+	while(1){
+	dir = getchar();
+	}
+}
 void s_dir()
 {
-	char dir;
-	dir = getch();
+	
 	switch(dir)
 	{
 	case 100:
@@ -42,6 +50,8 @@ void s_dir()
 		break;
 		}
 	}
+	else
+	flag = snake_dir;
 
 }
 
