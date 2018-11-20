@@ -102,7 +102,7 @@ void s_foodju(int h , int *c)
 				(*c)+=2;
 				break;
 				case'%':
-				(*c)+3;
+				(*c)+=3;
 				break;
 				case'#':
 				(*c)+=4;

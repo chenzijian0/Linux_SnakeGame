@@ -1,3 +1,5 @@
+#include<sys/time.h>
+#include<signal.h>
 #include<pthread.h>
 #include<stdio.h>
 #include<curses.h>
@@ -5,8 +7,11 @@
 #include"s.h"
 // s_food();
 // s_f_p();
+void re();
 void main()
 {
+	signal(SIGALRM,re);
+	set_ticker(500);
 	char *p_s;
 	score_count = 0;
 	head = 6;
@@ -53,8 +58,14 @@ void main()
 	move(0,2*MAP_MAX+5);
 	addstr(p_s);
 	refresh();
-	sleep(1);	
+	pause();
+	//sleep(1);	
 	//getch();
 	}
 	endwin();
+}
+
+void re()
+{
+	return;
 }

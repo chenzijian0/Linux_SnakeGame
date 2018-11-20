@@ -25,4 +25,5 @@ void s_dir();
 void s_nextdir(int ,int);
 void s_foodju(int ,int *);
 void s_getch();
+int set_ticker(int );
 
