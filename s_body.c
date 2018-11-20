@@ -19,11 +19,11 @@ void  body_p(int h,int b)
 {
 	int i = 0;
 	//head %= 20; 
-	move(b_d[h - 1].y,b_d[h - 1].x);
+	move(b_d[(h - 1)%20].y,b_d[(h - 1)%20].x);
 		addstr("1");
 	for(i = 1 ; i <= b ; i++)
 	{
-		move(b_d[h - 1 - i].y,b_d[h - 1 - i].x);
+		move(b_d[(h - 1 - i)%20].y,b_d[(h - 1 - i)%20].x);
 		addstr("9");
 	}
 	move(LINES-1,0);
