@@ -7,6 +7,7 @@
 // s_f_p();
 void main()
 {
+	char *p_s;
 	score_count = 0;
 	head = 6;
 	body = 5;
@@ -47,7 +48,10 @@ void main()
 	head++;
 	s_dir();
 	s_nextdir(head,body);
-	//s_foodju(head,&score_count);
+	s_foodju(head,&score_count);
+	sprintf(p_s,"Score count : %d",score_count);
+	move(0,2*MAP_MAX+5);
+	addstr(p_s);
 	refresh();
 	sleep(1);	
 	//getch();
