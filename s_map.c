@@ -7,9 +7,11 @@
 #include"s.h"
 // s_food();
 // s_f_p();
+
 void re();
 void main()
 {
+	int hit = 0;
 	signal(SIGALRM,re);
 	set_ticker(500);
 	char *p_s;
@@ -50,15 +52,28 @@ void main()
 	s_food();
 	s_f_p();
 	body_p(head,body);	
-	head++;
-	s_dir();
-	s_nextdir(head,body);
-	s_foodju(head,&score_count);
 	sprintf(p_s,"Score count : %d",score_count);
 	move(0,2*MAP_MAX+5);
 	addstr(p_s);
 	refresh();
 	pause();
+	head++;
+	s_dir();
+	s_nextdir(head,body);
+	hit = s_hit_wall_or_body(head,body);
+	if(hit)
+	{
+		move(3,2*MAP_MAX+5);
+		addstr("GAME OVER");
+		refresh();
+		set_ticker(5000);
+		sleep(5);
+		endwin();
+		exit(0);
+	}
+	s_foodju(head,&score_count);
+	
+	//pause();
 	//sleep(1);	
 	//getch();
 	}

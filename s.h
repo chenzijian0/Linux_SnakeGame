@@ -16,6 +16,7 @@ bd b_d[20];
 static int score_count;
 static int head;
 static int body;
+//static int hit;
 //static int flag;
 void s_f_p();
 void s_food();
@@ -26,4 +27,4 @@ void s_nextdir(int ,int);
 void s_foodju(int ,int *);
 void s_getch();
 int set_ticker(int );
-
+int s_hit_wall(int,int);
