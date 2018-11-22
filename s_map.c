@@ -11,17 +11,22 @@
 void re();
 void main()
 {
+	char *p_t;
+	int time_s = 250;
 	int hit = 0;
 	signal(SIGALRM,re);
-	set_ticker(500);
+	set_ticker(time_s);
 	char *p_s;
+	p_t  = malloc(sizeof(char )* 20);
+	p_s  = malloc(sizeof(char )* 20);
 	score_count = 0;
 	head = 6;
 	body = 5;
 	int i =0;
 	initscr();
 	body_i(head,body);
-	pthread_t t1;
+	pthread_t t1,t2;
+	pthread_create(&t2,NULL,s_food,(void*)1);
 	
 	pthread_create(&t1,NULL,s_getch,(void*)" ");
 	while(1){
@@ -49,7 +54,7 @@ void main()
 	move(MAP_MAX,i);
 	addstr("-");
 	}
-	s_food();
+	//s_food();
 	s_f_p();
 	body_p(head,body);	
 	sprintf(p_s,"Score count : %d",score_count);
@@ -71,8 +76,11 @@ void main()
 		endwin();
 		exit(0);
 	}
-	s_foodju(head,&score_count);
-	
+	if(s_foodju(head,&score_count,&time_s))
+	{
+	set_ticker(time_s);
+	}
+	body_c(score_count,&body);
 	//pause();
 	//sleep(1);	
 	//getch();

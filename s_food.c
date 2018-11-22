@@ -2,16 +2,18 @@
 #include<stdlib.h>
 #include<curses.h>
 #include<time.h>
+#include<unistd.h>
 #include"s.h"
 
-void s_food()
+void s_food(void* c)
 {	
 	int i = 0;
-	char *food1 = "*",*food2 = "&",*food3 = "%",*food4 = "#",*food5 = "@";
+	char *food1 = "*",*food2 = "&",*food3 = "%",*food4 = ">>",*food5 = "<<";
 	int x, y ;
 	
 	int foodchose;
 	srand((unsigned)time(NULL));
+	while(1){
 	foodchose = rand()%15 + 1 ;
 	x = rand()%(MAP_MAX-2)+1;
 	y = rand()%(MAP_MAX-2)+1;
@@ -23,81 +25,69 @@ void s_food()
 	case 4:
 	case 5:
 
-	for(i = 0 ; i< 7 ;i++ )
-	{
-		if(food_save[i].vaild == 0)
-		{
+	i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food1;
 		food_save[i].vaild = 1;
 		break;
-		}
-	}
+		
+	
 	break;
 	case 6:
 	case 7:
 	case 8:
 	case 9:
 
-	for( i = 0 ; i< 7 ;i++ )
-	{
-		if(food_save[i].vaild == 0)
-		{
+	i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food2;
 		food_save[i].vaild = 1;
 		break;
-		}
-	}
+		
+	
 	break;
 	case 10:
 	case 11:
 	case 12:
 
-	for( i = 0 ; i< 7 ;i++ )
-	{
-		if(food_save[i].vaild == 0)
-		{
+	i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food3;
 		food_save[i].vaild = 1;
 		break;
-		}
-	}
+		
+	
 	break;
 	case 13:
 	case 14:
 
-	for( i = 0 ; i< 7 ;i++ )
-	{
-		if(food_save[i].vaild == 0)
-		{
+	i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food4;
 		food_save[i].vaild = 1;
 		break;
-		}
-	}
+		
+	
 	break;
 	case 15:
 
-	for( i = 0 ; i< 7 ;i++ )
-	{
-		if(food_save[i].vaild == 0)
-		{
+	i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
-		food_save[i].food =  food5;
+		food_save[i].food =  food4;
 		food_save[i].vaild = 1;
 		break;
-		}
-	}
+		
+	
 	break;
 
+	}
+	(int )c++;
+	sleep(2);
 	}
 }
 

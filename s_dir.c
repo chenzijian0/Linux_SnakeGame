@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<curses.h>
+#include<string.h>
 #include"s.h"
 #define DIR_LEFT 1
 #define DIR_RIGHT -1
@@ -89,7 +90,7 @@ void s_nextdir(int h,int b)
 	
 }
 
-void s_foodju(int h , int *c)
+int s_foodju(int h , int *c,int *time_s)
 {
 	int i = 0;
 	for(i = 0; i<7;i++)
@@ -103,24 +104,34 @@ void s_foodju(int h , int *c)
 			{
 				case'*':
 				(*c)+=1;
+				return 0;
 				break;
 				case'&':
 				(*c)+=2;
+				return 0;
 				break;
 				case'%':
 				(*c)+=3;
+				return 0;
 				break;
-				case'#':
-				(*c)+=4;
-				break;
-				case'@':
-				(*c)+=5;
-				break;
-			}
+				}
+			if(strcmp(food_save[i].food,">>")==0)
+				{
+				(*time_s) = (*time_s)/2;
+				return 1;				
+				//set_ticker((*time));
+				}
+			if(strcmp(food_save[i].food,"<<")==0)
+				{
+				(*time_s) =(*time_s) * 2;
+				return 1;				
+				//set_ticker(time);
+				}
 			break;
 		}
 	}
 	}
+	return  0;
 }
 
 int s_hit_wall_or_body(int h, int b)

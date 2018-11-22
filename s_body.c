@@ -30,7 +30,12 @@ void  body_p(int h,int b)
 }
 
 
-
+void body_c(int c ,int *b)
+{	
+	c = c /5 ;
+	(*b)=5+c;
+	
+}
 
 
 
