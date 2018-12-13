@@ -78,7 +78,7 @@ void s_food(void* c)
 	i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
-		food_save[i].food =  food4;
+		food_save[i].food =  food5;
 		food_save[i].vaild = 1;
 		break;
 		
