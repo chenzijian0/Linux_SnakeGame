@@ -7,7 +7,7 @@
 #include"s.h"
 // s_food();
 // s_f_p();
-
+void print_map();
 void re();
 void main()
 {
@@ -30,31 +30,10 @@ void main()
 	pthread_create(&t2,NULL,s_food,(void*)1);
 	
 	pthread_create(&t1,NULL,s_getch,(void*)" ");
+	print_map();
 	while(1){
 	//clear();
-	
-	for(i=0;i<2*MAP_MAX;i++)
-	{
-	move(0,i);
-	addstr("-");
-	}
 
-	for(i=0;i<MAP_MAX;i++)
-	{
-	move(i,0);
-	addstr("|");
-	
-	}
-	for(i=0;i<MAP_MAX;i++)
-	{
-	move(i,MAP_MAX*2);
-	addstr("|");
-	}
-	for(i = 0; i<2*MAP_MAX ;i++)
-	{
-	move(MAP_MAX,i);
-	addstr("-");
-	}
 	//s_food();
 	s_f_p();
 	//body_p(head,body);
@@ -94,7 +73,32 @@ void main()
 	}
 	endwin();
 }
+void print_map()
+{
+	int i = 0;
+	for(i=0;i<2*MAP_MAX;i++)
+		{
+		move(0,i);
+		addstr("-");
+		}
 
+		for(i=0;i<MAP_MAX;i++)
+		{
+		move(i,0);
+		addstr("|");
+	
+		}
+		for(i=0;i<MAP_MAX;i++)
+		{
+		move(i,MAP_MAX*2);
+		addstr("|");
+		}
+		for(i = 0; i<2*MAP_MAX ;i++)
+		{
+		move(MAP_MAX,i);
+		addstr("-");
+		}
+}
 void re()
 {
 	return;

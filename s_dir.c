@@ -117,12 +117,16 @@ int s_foodju(int h , int *c,int *time_s)
 				}
 			if(strcmp(food_save[i].food,">>")==0)
 				{
+				move(food_save[i].y,food_save[i].x+1);
+				addstr(" ");
 				(*time_s) = (*time_s)/2;
 				return 1;				
 				//set_ticker((*time));
 				}
 			if(strcmp(food_save[i].food,"<<")==0)
 				{
+				move(food_save[i].y,food_save[i].x+1);
+				addstr(" ");
 				(*time_s) =(*time_s) * 2;
 				return 1;				
 				//set_ticker(time);
