@@ -25,12 +25,13 @@ void main()
 	int i =0;
 	initscr();
 	body_i(head,body);
+	body_p(head,body);
 	pthread_t t1,t2;
 	pthread_create(&t2,NULL,s_food,(void*)1);
 	
 	pthread_create(&t1,NULL,s_getch,(void*)" ");
 	while(1){
-	clear();
+	//clear();
 	
 	for(i=0;i<2*MAP_MAX;i++)
 	{
@@ -56,7 +57,13 @@ void main()
 	}
 	//s_food();
 	s_f_p();
-	body_p(head,body);	
+	//body_p(head,body);
+	move(b_d[(head - 1)%20].y,b_d[(head - 1)%20].x);
+	addstr("1");
+	move(b_d[(head - 1 - 1)%20].y,b_d[(head - 1 - 1)%20].x);
+	addstr("9");
+	move(b_d[(head - 1 - body -1)%20].y,b_d[(head - 1 - body -1)%20].x);
+	addstr(" ");
 	sprintf(p_s,"Score count : %d",score_count);
 	move(0,2*MAP_MAX+5);
 	addstr(p_s);

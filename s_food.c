@@ -17,6 +17,11 @@ void s_food(void* c)
 	foodchose = rand()%15 + 1 ;
 	x = rand()%(MAP_MAX-2)+1;
 	y = rand()%(MAP_MAX-2)+1;
+	i = (int)c % 7;
+	if(food_save[i].vaild == 1){
+	move(food_save[i].y,food_save[i].x);
+	addstr("  ");
+	}
 	switch(foodchose)
 	{
 	case 1:
@@ -25,7 +30,7 @@ void s_food(void* c)
 	case 4:
 	case 5:
 
-	i = (int)c % 7;
+	//i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food1;
@@ -39,7 +44,7 @@ void s_food(void* c)
 	case 8:
 	case 9:
 
-	i = (int)c % 7;
+	//i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food2;
@@ -52,7 +57,7 @@ void s_food(void* c)
 	case 11:
 	case 12:
 
-	i = (int)c % 7;
+	//i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food3;
@@ -64,7 +69,7 @@ void s_food(void* c)
 	case 13:
 	case 14:
 
-	i = (int)c % 7;
+	//i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food4;
@@ -75,7 +80,7 @@ void s_food(void* c)
 	break;
 	case 15:
 
-	i = (int)c % 7;
+	//i = (int)c % 7;
 		food_save[i].x = x;
 		food_save[i].y = y;
 		food_save[i].food =  food5;
