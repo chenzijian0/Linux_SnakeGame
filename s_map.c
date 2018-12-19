@@ -11,14 +11,15 @@ void print_map();
 void re();
 void main()
 {
-	char *p_t;
+	
 	int time_s = 250;
-	int hit = 0;
 	signal(SIGALRM,re);
 	set_ticker(time_s);
+	char *p_t;
 	char *p_s;
 	p_t  = malloc(sizeof(char )* 20);
 	p_s  = malloc(sizeof(char )* 20);
+	int hit = 0;
 	score_count = 0;
 	head = 6;
 	body = 5;
@@ -36,6 +37,17 @@ void main()
 
 	//s_food();
 	s_f_p();
+
+	head++;
+	s_dir();
+	s_nextdir(head,body);
+	hit = s_hit_wall_or_body(head,body);
+	
+	if(s_foodju(head,&score_count,&time_s))
+	{
+	set_ticker(time_s);
+	}
+	body_c(score_count,&body);
 	//body_p(head,body);
 	move(b_d[(head - 1)%20].y,b_d[(head - 1)%20].x);
 	addstr("1");
@@ -47,26 +59,29 @@ void main()
 	move(0,2*MAP_MAX+5);
 	addstr(p_s);
 	refresh();
-	pause();
-	head++;
-	s_dir();
-	s_nextdir(head,body);
-	hit = s_hit_wall_or_body(head,body);
+	if(score_count>65)
+	{
+		move(3,2*MAP_MAX+5);
+		addstr("YOU ARE LONG ENOUGH");
+		refresh();
+		set_ticker(10000);
+		sleep(10);
+		endwin();
+		exit(0);
+
+	}
 	if(hit)
 	{
 		move(3,2*MAP_MAX+5);
 		addstr("GAME OVER");
 		refresh();
-		set_ticker(5000);
-		sleep(5);
+		set_ticker(10000);
+		sleep(10);
 		endwin();
 		exit(0);
 	}
-	if(s_foodju(head,&score_count,&time_s))
-	{
-	set_ticker(time_s);
-	}
-	body_c(score_count,&body);
+	pause();
+	
 	//pause();
 	//sleep(1);	
 	//getch();
