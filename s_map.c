@@ -50,9 +50,9 @@ void main()
 	body_c(score_count,&body);
 	//body_p(head,body);
 	move(b_d[(head - 1)%20].y,b_d[(head - 1)%20].x);
-	addstr("1");
+	addstr("@");
 	move(b_d[(head - 1 - 1)%20].y,b_d[(head - 1 - 1)%20].x);
-	addstr("9");
+	addstr("#");
 	move(b_d[(head - 1 - body -1)%20].y,b_d[(head - 1 - body -1)%20].x);
 	addstr(" ");
 	sprintf(p_s,"Score count : %d",score_count);
