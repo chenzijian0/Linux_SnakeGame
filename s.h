@@ -1,4 +1,4 @@
-#define MAP_MAX 30
+#define MAP_MAX 40
 typedef struct food_add{
 	int x;
 	int y;
