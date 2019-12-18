@@ -1,4 +1,4 @@
-#define MAP_MAX 30
+#define MAP_MAX 40
 typedef struct food_add{
 	int x;
 	int y;
@@ -13,10 +13,20 @@ typedef struct body_add{
 }bd;
 fa food_save[7];
 bd b_d[20];
-//int head = 4;
-//int body = 3;
+static int score_count;
+static int head;
+static int body;
+static int food_count;
+//static int hit;
+//static int flag;
 void s_f_p();
-void s_food();
-void body_i();
-void body_p();
-void s_dir(char );
+void s_food(void* );
+void body_i(int ,int);
+void body_p(int ,int);
+void s_dir();
+void s_nextdir(int ,int);
+int s_foodju(int ,int *,int*);
+void s_getch();
+int set_ticker(int );
+int s_hit_wall(int,int);
+void body_c(int ,int*);
